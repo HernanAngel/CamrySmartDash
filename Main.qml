@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Window
+import QtQuick.Controls
 
 Window{
   id: root
@@ -56,6 +57,7 @@ Window{
 
 
     Row{
+        id: dashboardRow
         anchors.centerIn: parent
         spacing: 35
 
@@ -180,6 +182,40 @@ Window{
                    }
                }
     }
+
+    Button{
+                       id: simulationButton
+                       anchors.top: dashboardRow.bottom
+                       anchors.horizontalCenter: parent.horizontalCenter
+                       anchors.topMargin: 20
+                       onClicked: {
+                                              root.simulation= !root.simulation
+                       }
+                       text: root.simulation ? "Stop Simulation" : "Resume Simulation"
+
+                       background: Rectangle {
+                                              radius: 10
+                                              color: simulationButton.hovered ? "#142b3a" : "#101b2b"
+                                              border.color: simulationButton.hovered ? "#45c8df" : "#164b65"
+                                              border.width: 1
+
+                                              Behavior on color{
+
+                                                                     ColorAnimation {
+                                                                                            duration: 200
+                                                                     }
+                                              }
+                       }
+
+                       contentItem: Text{
+                                              text: simulationButton.text
+                                              color: "#00dcff"
+                                              font.pixelSize: 16
+                                              horizontalAlignment: Text.AlignHCenter
+                                              verticalAlignment: Text.AlignVCenter
+                       }
+    }
+
 
 
     Text {
