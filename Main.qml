@@ -141,7 +141,8 @@ Window{
                    }
                }
 
-               Rectangle {
+         Rectangle {
+                   id: engineStatusPanel
                    width: 310
                    height: 360
                    radius: 20
@@ -183,6 +184,14 @@ Window{
                }
     }
 
+    /*
+       CAMRY SMART DASHBOARD
+       Build 002 - Simulation Controls
+
+       This button pauses and resumes
+       the simulated vehicle data
+
+    */
     Button{
                        id: simulationButton
                        anchors.top: dashboardRow.bottom
@@ -216,7 +225,32 @@ Window{
                        }
     }
 
+    /*
+      SIMULATION ANIMATION
+      if simulation is running text
+      should turn green. Otherwise gray.
+     */
+    Row{
+        id: runningSimulation
+        anchors.right: dashboardRow.right
+        anchors.bottom: dashboardRow.top
+        anchors.bottomMargin: 10
+        spacing: 8
 
+        Rectangle{
+                width: 10
+                height:  10
+                radius: width / 2
+                anchors.verticalCenter: parent.verticalCenter
+                color: root.simulation ? "#00D6A0" : "#E6A23C"
+        }
+
+        Text{
+                text: "SIMULATION ACTIVE"
+                font.pixelSize: 13
+                color: root.simulation ? "#00D6A0" : "#E6A23C"
+        }
+    }
 
     Text {
         text: "CAMRY PROJECT  //  PROTOTYPE V0.1"
