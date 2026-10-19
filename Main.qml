@@ -141,47 +141,9 @@ Window{
                    }
                }
 
-         Rectangle {
-                   id: engineStatusPanel
-                   width: 310
-                   height: 360
-                   radius: 20
-                   color: "#101b2b"
-                   border.color: "#164b65"
-
-                   Column {
-                       anchors.centerIn: parent
-                       spacing: 20
-
-                       Text {
-                           text: "ENGINE STATUS"
-                           color: "#00dcff"
-                           font.pixelSize: 19
-                           anchors.horizontalCenter: parent.horizontalCenter
-                       }
-
-                       Text {
-                           text: root.coolant.toFixed(1) + " °C"
-                           color: "white"
-                           font.pixelSize: 39
-                           anchors.horizontalCenter: parent.horizontalCenter
-                       }
-
-                       Text {
-                           text: "Coolant Temperature"
-                           color: "#8095aa"
-                           font.pixelSize: 16
-                           anchors.horizontalCenter: parent.horizontalCenter
-                       }
-
-                       Text {
-                           text: "SIMULATED DATA"
-                           color: "#ffcc66"
-                           font.pixelSize: 15
-                           anchors.horizontalCenter: parent.horizontalCenter
-                       }
-                   }
-               }
+         EngineStatusPanel{
+             coolantTemperature: root.coolant
+         }
     }
 
     /*
@@ -228,7 +190,7 @@ Window{
     /*
       SIMULATION ANIMATION
       if simulation is running text
-      should turn green. Otherwise gray.
+      should turn green. Otherwise orange.
      */
     Row{
         id: runningSimulation

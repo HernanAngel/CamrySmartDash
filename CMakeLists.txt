@@ -4,7 +4,7 @@ project(CamrySmartDash VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Quick)
+find_package(Qt6 REQUIRED COMPONENTS Quick QuickControls2)
 
 qt_standard_project_setup(REQUIRES 6.10)
 
@@ -21,6 +21,7 @@ qt_add_qml_module(appCamrySmartDash
     URI CamrySmartDash
     QML_FILES
         Main.qml
+        QML_FILES EngineStatusPanel.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
@@ -35,7 +36,9 @@ set_target_properties(appCamrySmartDash PROPERTIES
 )
 
 target_link_libraries(appCamrySmartDash
-    PRIVATE Qt6::Quick
+    PRIVATE
+      Qt6::Quick
+      Qt6::QuickControls2
 )
 
 install(TARGETS appCamrySmartDash
